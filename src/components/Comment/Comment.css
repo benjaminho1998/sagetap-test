@@ -1,0 +1,23 @@
+.spacing {
+    margin-bottom: 15px;
+}
+
+.comment-header {
+    display: flex;
+    align-items: center;
+}
+
+.comment-name-date {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.date-created {
+    font-size: 12px;
+    color: gray;
+}
+
+.name {
+    font-size: 18px;
+}

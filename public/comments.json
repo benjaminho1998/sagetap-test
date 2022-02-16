@@ -1,0 +1,75 @@
+{ "comments":
+    [
+        {
+            "name": "Benjamin Ho",
+            "dateCreated": "Monday, October 21, 2022 at 2:34 pm",
+            "comment": "This idea is great! We should do more of this, this and this. Also, the mitochondria is the powerhouse of the cell.",
+            "edited": true,
+            "dateEdited": "Monday, October 22, 2022 at 4:12 pm",
+            "numberOfLikes": 2,
+            "likers": [
+                "Michael Phelps",
+                "John Cena"
+            ],
+            "acknowledged": false,
+            "deleted": false
+        }, 
+        {
+            "name": "Michelle Obama",
+            "dateCreated": "Tuesday, October 22, 2022 at 4:45 pm",
+            "comment": "I like it.",
+            "edited": false,
+            "dateEdited": null,
+            "numberOfLikes": 0,
+            "likers": [],
+            "acknowledged": true,
+            "deleted": true
+        },
+        {
+            "name": "Jack Sparrow",
+            "dateCreated": "Wednesday, October 23, 2022 at 2:40 pm",
+            "comment": "Maybe we could reconvene later to talk about this? I'm not sure how to proceed here.",
+            "edited": true,
+            "dateEdited": "Wednesday, October 23, 2022 at 5:18 pm",
+            "numberOfLikes": 1,
+            "likers": [
+                "John Cena"
+            ],
+            "acknowledged": true,
+            "deleted": false
+        },
+        {
+            "name": "Shelly Seashell",
+            "dateCreated": "Thursday, October 24, 2022 at 11:20 am",
+            "comment": "We definitely should be taking this product to the next level. When are you all available?",
+            "edited": false,
+            "dateEdited": null,
+            "numberOfLikes": 0,
+            "likers": [],
+            "acknowledged": false,
+            "deleted": false
+        },
+        {
+            "name": "Queen Elizabeth",
+            "dateCreated": "Thursday, October 24, 2022 at 11:20 am",
+            "comment": "We definitely should be taking this product to the next level. When are you all available?",
+            "edited": false,
+            "dateEdited": null,
+            "numberOfLikes": 0,
+            "likers": [],
+            "acknowledged": false,
+            "deleted": false
+        },
+        {
+            "name": "Michael Scott",
+            "dateCreated": "Thursday, October 24, 2022 at 11:20 am",
+            "comment": "We definitely should be taking this product to the next level. When are you all available?",
+            "edited": false,
+            "dateEdited": null,
+            "numberOfLikes": 0,
+            "likers": [],
+            "acknowledged": false,
+            "deleted": false
+        }
+    ]
+}
