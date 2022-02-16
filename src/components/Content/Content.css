@@ -2,7 +2,7 @@
     height: 100%;
 }
 
-.create-user-container {
+.centered {
     display: flex;
     align-items: center;
     justify-content: center;
