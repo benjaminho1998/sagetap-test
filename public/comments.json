@@ -12,7 +12,8 @@
                 "John Cena"
             ],
             "acknowledged": false,
-            "deleted": false
+            "deleted": false,
+            "role": "Software Engineer"
         }, 
         {
             "name": "Michelle Obama",
@@ -23,7 +24,8 @@
             "numberOfLikes": 0,
             "likers": [],
             "acknowledged": true,
-            "deleted": true
+            "deleted": true,
+            "role": "CEO"
         },
         {
             "name": "Jack Sparrow",
@@ -36,7 +38,8 @@
                 "John Cena"
             ],
             "acknowledged": true,
-            "deleted": false
+            "deleted": false,
+            "role": "HR"
         },
         {
             "name": "Shelly Seashell",
@@ -47,7 +50,8 @@
             "numberOfLikes": 0,
             "likers": [],
             "acknowledged": false,
-            "deleted": false
+            "deleted": false,
+            "role": "Product Manager"
         },
         {
             "name": "Queen Elizabeth",
@@ -58,7 +62,8 @@
             "numberOfLikes": 0,
             "likers": [],
             "acknowledged": false,
-            "deleted": false
+            "deleted": false,
+            "role": "Sagetapper"
         },
         {
             "name": "Michael Scott",
@@ -69,7 +74,8 @@
             "numberOfLikes": 0,
             "likers": [],
             "acknowledged": false,
-            "deleted": false
+            "deleted": false,
+            "role": null
         }
     ]
 }

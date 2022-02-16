@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import './Content.css';
 import Subheader from '../Subheader/Subheader';
 import Sidebar from '../Sidebar/Sidebar';
+import CreateUser from '../CreateUser/CreateUser';
 import axios from 'axios';
 
 //Container for the non-header content part of the app
+//Also loads in the json data so that the commentsLength shared state can be passed to subheader and sidebar
 const Content = () => {
 
     //Raised the state of "show" to this component because it's used in sidebar and in subheader
@@ -12,6 +14,13 @@ const Content = () => {
 
     //Comments state array to hold base comments and future comments
     const [comments, setComments] = useState([]);
+
+    const [user, setUser] = useState({
+        firstName: 'Example',
+        lastName: 'User',
+        email: 'example@email.com',
+        role: 'Software Engineer'
+    });
 
     //Axios get call to retrieve base data
     const getComments = () => {
@@ -31,14 +40,17 @@ const Content = () => {
     }, []);
 
     //Sets the show state variable to the opposite of what it currently is
-    const handleClick = () => {
+    const handleShow = () => {
         setShow(!show);
     }
 
     return (
         <div className='content-container'>
-            <Subheader commentsLength={comments.length} handleClick={handleClick} />
-            <Sidebar comments={comments} show={show} handleClick={handleClick} />
+            <Subheader commentsLength={comments.length} handleShow={handleShow} />
+            <Sidebar comments={comments} show={show} handleShow={handleShow} />
+            <div className='create-user-container'>
+                <CreateUser />
+            </div>
         </div>
     );
 }

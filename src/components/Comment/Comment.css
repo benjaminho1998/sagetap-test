@@ -2,6 +2,10 @@
     margin-bottom: 15px;
 }
 
+.comment-text {
+    margin-top: 15px;
+}
+
 .comment-header {
     display: flex;
     align-items: center;
@@ -21,3 +25,31 @@
 .name {
     font-size: 18px;
 }
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer-sub {
+    display: flex;
+    align-items: center;
+}
+
+.trash-icon {
+    margin-bottom: 5px;
+}
+
+.num-likes {
+    font-weight: bold;
+    font-size: 18px;
+    margin-left: 5px;
+    color: black;
+    border-radius: 50%;
+}
+
+.num-likes:hover, .num-likes:focus {
+    cursor: pointer;
+}
+

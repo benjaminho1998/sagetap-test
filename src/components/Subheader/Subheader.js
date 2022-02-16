@@ -7,15 +7,15 @@ import Tooltip from '@mui/material/Tooltip';
 
 const Subheader = (props) => {
 
-    const handleClick = () => {
-        props.handleClick();
+    const handleShow = () => {
+        props.handleShow();
     }
 
     return (
         <div className='subheader-container'>
             <span>Demo Project</span>
             <Tooltip title='Open Comments'>
-                <IconButton onClick={handleClick} aria-label='comments'>
+                <IconButton onClick={handleShow} aria-label='comments'>
                     <Badge badgeContent={props.commentsLength} color='error'>
                         <CommentIcon style={{ color: "white" }} color='action' />
                     </Badge>
