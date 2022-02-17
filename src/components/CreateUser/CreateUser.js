@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './CreateUser.css';
 import TextField from '@mui/material/TextField';
 import { v4 as uuidv4 } from 'uuid';
@@ -10,7 +10,7 @@ import Button from '@mui/material/Button';
 import { useDispatch } from 'react-redux';
 import { updateUser } from '../../store/actions/userAction';
 
-const CreateUser = () => {
+const CreateUser = (props) => {
 
     const roles = ['None', 'Sagetapper', 'Software Engeinner', 'Product Manager', 'CEO', 'Sales', 'HR', 'Marketing', 'Business Analyst', 'Manager', 'Intern', 'Product Design'];
 
@@ -19,6 +19,8 @@ const CreateUser = () => {
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
 
+    const [disabled, setDisabled] = useState(true);
+
     const handleRoleChange = (event) => {
         setRole(event.target.value);
     };
@@ -26,13 +28,16 @@ const CreateUser = () => {
     const dispatch = useDispatch();
 
     const handleUserSubmit = () => {
+        //Calls prop function to show snackbar in content component
+        props.handleClick();
+
         const user = {
             firstName: firstName,
             lastName: lastName,
             email: email,
             role: role
         };
-        
+        console.log('user', user)
         dispatch(updateUser(user));
     }
 
@@ -50,9 +55,17 @@ const CreateUser = () => {
         }
     }
 
+    useEffect(() => {
+        if(firstName.length > 0 && lastName.length > 0 && email.length > 0 && role.length > 0) {
+            setDisabled(false);
+        } else {
+            setDisabled(true);
+        }
+    }, [firstName, lastName, email, role])
+
     return (
         <div className='text-field-container'>
-            <h5>Create a User</h5>
+            <h5>Update Active User</h5>
             <TextField name='firstName' onChange={handleTextChange} value={firstName} style={{marginTop: '15px'}} label='First Name' variant="standard" />
             <TextField name='lastName' onChange={handleTextChange} value={lastName} style={{marginTop: '15px'}} label='Last Name' variant="standard" />
             <TextField name='email' onChange={handleTextChange} value={email} style={{marginTop: '15px'}} label='Email' variant="standard" />
@@ -68,7 +81,7 @@ const CreateUser = () => {
                     )}
                 </Select>
             </FormControl>
-            <Button onClick={handleUserSubmit} style={{marginTop: '15px'}} variant="contained">Submit</Button>
+            <Button disabled={disabled} onClick={handleUserSubmit} style={{marginTop: '15px'}} variant="contained">Submit</Button>
         </div>
     );
 }

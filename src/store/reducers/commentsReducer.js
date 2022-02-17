@@ -1,4 +1,4 @@
-import {GET_COMMENTS, COMMENTS_ERROR} from '../types'
+import {GET_COMMENTS, COMMENTS_ERROR, ADD_COMMENT} from '../types'
 
 const initialState = {
     comments: [],
@@ -13,11 +13,21 @@ const commentsReducer = (state = initialState, action) => {
                 comments: action.payload,
                 loading: false
             }
+        case ADD_COMMENT:
+            console.log('ADD', state.comments.comments)
+            console.log('PAYLOAD', action.payload)
+            return {
+                ...state,
+                comments: {
+                    comments: [...state.comments.comments, action.payload]
+                },
+                loading: false
+            }
         case COMMENTS_ERROR:
-                return{
-                    loading: false, 
-                    error: action.payload 
-                }
+            return{
+                loading: false, 
+                error: action.payload 
+            }
         default: return state;
     }
 }

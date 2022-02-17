@@ -1,4 +1,4 @@
-import {GET_COMMENTS, COMMENTS_ERROR} from '../types'
+import {GET_COMMENTS, COMMENTS_ERROR, ADD_COMMENT} from '../types'
 import axios from 'axios';
 
 export const getComments = () => async dispatch => {
@@ -15,4 +15,11 @@ export const getComments = () => async dispatch => {
             payload: error,
         });
     }
+}
+
+export const addComment = (comment) => dispatch => {
+    dispatch({
+        type: ADD_COMMENT,
+        payload: comment
+    });
 }

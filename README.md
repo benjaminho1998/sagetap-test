@@ -23,5 +23,7 @@ The objective of this project is to create a sidebar for builders to leave comme
 
 ### Challenges and Solutions
 - When
+- Comment component kept rerendering for no reason. Realized it was the uuid key in Sidebar that kept changing
+- Tried checking for state values right after setting them to know if a button was supposed to be disabled or not, but the state wouldn't update in time and required at least two keystrokes in the last field to enable the button. As a result, I used the useEffect hook and fixed it, and it had the bonus of enabling the button when the fields are autofilled too.
 
 ### Potential Future Additions

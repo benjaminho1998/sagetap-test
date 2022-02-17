@@ -13,7 +13,7 @@ import ReplyIcon from '@mui/icons-material/Reply';
 
 
 //TODO: Figure out how to get user info into comments / ADD REDUX????
-const Comment = React.memo((props) => {
+const Comment = (props) => {
     console.log('asdf')
 
     // const [checked, setChecked] = useState(false);
@@ -57,11 +57,11 @@ const Comment = React.memo((props) => {
         <Card className='spacing'>
             <Card.Body>
                 <Card.Title className='comment-header'>
-                    <Avatar style={{paddingTop: '2.5px', width: '45px', height: '45px'}} {...stringAvatar(props.name)} />
+                    <Avatar style={{width: '45px', height: '45px'}} {...stringAvatar(props.name)} />
                     <div className='comment-name-date'>
                         <div className='name'>
                             {props.name} 
-                            {props.role && <Chip style={{height: '18px', marginLeft: '5px'}} label={props.role} />}
+                            {props.role !== 'None' && <Chip style={{height: '18px', marginLeft: '5px'}} label={props.role} />}
                         </div>
                         <div className='date-created'>{props.dateCreated}</div>
                     </div>
@@ -107,6 +107,6 @@ const Comment = React.memo((props) => {
             </Card.Body>
         </Card>
     );
-});
+};
 
-export default Comment;
+export default React.memo(Comment);
