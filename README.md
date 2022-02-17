@@ -15,6 +15,7 @@ The objective of this project is to create a sidebar for builders to leave comme
 
 ### Tech
 - React
+- Redux (pretend backend)
 - JavaScript
 - CSS
 - React Bootstrap
@@ -29,3 +30,6 @@ The objective of this project is to create a sidebar for builders to leave comme
 - useCallback to memoize callback functions going to Comment child component to reduce renders of Comment
 
 ### Potential Future Additions
+
+### TODO
+- uninstall lodash

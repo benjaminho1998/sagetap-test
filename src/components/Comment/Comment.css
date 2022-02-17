@@ -24,6 +24,7 @@
 
 .name {
     font-size: 18px;
+    margin-bottom: 3px;
 }
 
 .footer {
@@ -51,6 +52,14 @@
 
 .num-likes:hover, .num-likes:focus, .pointer {
     cursor: pointer;
+}
+
+.hidden-icons {
+    display: flex;
+}
+
+.border {
+    border: 1px solid red !important;
 }
 
 
