@@ -12,7 +12,6 @@ import Chip from '@mui/material/Chip';
 import ReplyIcon from '@mui/icons-material/Reply';
 
 
-//TODO: Figure out how to get user info into comments / ADD REDUX????
 const Comment = (props) => {
     console.log('asdf')
 
@@ -53,6 +52,14 @@ const Comment = (props) => {
         };
     }
 
+    const handleReply = () => {
+        props.handleReply(props.id);
+    }
+
+    const handleViewLikes = () => {
+        props.handleViewLikes(props.id);
+    }
+
     return (
         <Card className='spacing'>
             <Card.Body>
@@ -71,35 +78,35 @@ const Comment = (props) => {
                     <div className='footer-sub'>
                         <Tooltip title='Like Comment'>
                             <div>
-                                <UseAnimations size={30} strokeColor='red' fillColor='red' animation={heart} />
-                                {/* <UseAnimations reverse={checked} onClick={() => {setChecked(!checked)}} size={30} strokeColor='red' fillColor='red' animation={heart} /> */}
+                                <UseAnimations className='pointer' size={30} strokeColor='red' fillColor='red' animation={heart} />
+                                {/* <UseAnimations className='pointer' reverse={checked} onClick={() => {setChecked(!checked)}} size={30} strokeColor='red' fillColor='red' animation={heart} /> */}
                             </div>
                         </Tooltip>
                         {props.numberOfLikes > 0 && 
                             <Tooltip title='View Likes'>
-                                <div className='num-likes'>{props.numberOfLikes}</div>
+                                <div onClick={handleViewLikes} className='num-likes'>{props.numberOfLikes}</div>
                             </Tooltip>
                         }
                     </div>
                     <div className='footer-sub'>
                         <Tooltip title='Reply to Comment'>
                             <div>
-                                <ReplyIcon></ReplyIcon>
+                                <ReplyIcon onClick={handleReply} className='pointer'></ReplyIcon>
                             </div>
                         </Tooltip>
                         <Tooltip title='Mark as Complete'>
                             <div>
-                                <UseAnimations size={30} animation={checkBox} />
+                                <UseAnimations className='pointer' size={30} animation={checkBox} />
                             </div>
                         </Tooltip>
                         <Tooltip title='Edit Comment'>
                             <div>
-                                <UseAnimations size={34} animation={edit} />
+                                <UseAnimations className='pointer' size={34} animation={edit} />
                             </div>
                         </Tooltip>
                         <Tooltip title='Delete Comment'>
                             <div className='trash-icon'>
-                                <UseAnimations size={30} animation={trash2} />
+                                <UseAnimations className='pointer' size={30} animation={trash2} />
                             </div>
                         </Tooltip>
                     </div>
