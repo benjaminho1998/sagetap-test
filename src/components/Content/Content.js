@@ -5,7 +5,6 @@ import Sidebar from '../Sidebar/Sidebar';
 import CreateUser from '../CreateUser/CreateUser';
 import { useDispatch, useSelector } from 'react-redux';
 import { getComments } from '../../store/actions/commentsAction';
-import CircularProgress from '@mui/material/CircularProgress';
 
 //Container for the non-header content part of the app
 //Also loads in the json data so that the commentsLength shared state can be passed to subheader and sidebar

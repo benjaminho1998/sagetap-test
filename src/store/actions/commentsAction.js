@@ -4,13 +4,13 @@ import axios from 'axios';
 export const getComments = () => async dispatch => {
     try{
         const res = await axios.get('comments.json');
-        dispatch( {
+        dispatch({
             type: GET_COMMENTS,
             payload: res.data
         });
     }
     catch(error){
-        dispatch( {
+        dispatch({
             type: COMMENTS_ERROR,
             payload: error,
         });

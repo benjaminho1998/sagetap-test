@@ -1,24 +1,22 @@
-import {GET_USER, USER_ERROR} from '../types';
+import { UPDATE_USER } from '../types';
 
 const initialState = {
-    user: {},
-    loading: true
+    user: {
+        firstName: 'Example',
+        lastName: 'User',
+        email: 'example@email.com',
+        role: 'Software Engineer'
+    }
 }
 
 const userReducer = (state = initialState, action) => {
     switch(action.type){
-        case GET_USER:
-        return {
-            ...state,
-            user: action.payload,
-            loading: false
-        }
-        case USER_ERROR:
-            return{
-                loading: false, 
-                error: action.payload 
+        case UPDATE_USER:
+            return {
+                ...state,
+                user: action.payload,
             }
-        default: return state
+        default: return state;
     }
 }
 
