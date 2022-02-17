@@ -10,17 +10,17 @@ import trash2 from 'react-useanimations/lib/trash2';
 import Tooltip from '@mui/material/Tooltip';
 import Chip from '@mui/material/Chip';
 import ReplyIcon from '@mui/icons-material/Reply';
-import ChatBubbleOutlineRoundedIcon from '@mui/icons-material/ChatBubbleOutlineRounded';
 
 
 //TODO: Figure out how to get user info into comments / ADD REDUX????
-const Comment = (props) => {
+const Comment = React.memo((props) => {
+    console.log('asdf')
 
-    const [checked, setChecked] = useState(false);
+    // const [checked, setChecked] = useState(false);
     
-    useEffect(() => {
-        console.log('checked', checked);
-    }, [checked]);
+    // useEffect(() => {
+    //     console.log('checked', checked);
+    // }, [checked]);
 
     //This function is from https://mui.com/components/avatars/
     //It chooses a different color for the avatar depending on the name
@@ -71,7 +71,8 @@ const Comment = (props) => {
                     <div className='footer-sub'>
                         <Tooltip title='Like Comment'>
                             <div>
-                                <UseAnimations reverse={checked} onClick={() => {setChecked(!checked)}} size={30} strokeColor='red' fillColor='red' animation={heart} />
+                                <UseAnimations size={30} strokeColor='red' fillColor='red' animation={heart} />
+                                {/* <UseAnimations reverse={checked} onClick={() => {setChecked(!checked)}} size={30} strokeColor='red' fillColor='red' animation={heart} /> */}
                             </div>
                         </Tooltip>
                         {props.numberOfLikes > 0 && 
@@ -106,6 +107,6 @@ const Comment = (props) => {
             </Card.Body>
         </Card>
     );
-}
+});
 
 export default Comment;

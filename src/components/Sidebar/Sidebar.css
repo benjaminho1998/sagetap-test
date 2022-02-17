@@ -1,0 +1,4 @@
+.button-float {
+    display: flex;
+    justify-content: end;
+}

@@ -8,7 +8,7 @@ import { getComments } from '../../store/actions/commentsAction';
 
 //Container for the non-header content part of the app
 //Also loads in the json data so that the commentsLength shared state can be passed to subheader and sidebar
-const Content = () => {
+const Content = React.memo(() => {
 
     //Raised the state of "show" to this component because it's used in sidebar and in subheader
     const [show, setShow] = useState(false);
@@ -46,6 +46,6 @@ const Content = () => {
             }
         </div>
     );
-}
+});
 
 export default Content;
