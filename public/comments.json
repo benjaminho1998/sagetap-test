@@ -1,6 +1,7 @@
 { "comments":
     [
         {
+            "id": 1,
             "name": "Benjamin Ho",
             "dateCreated": "Monday, October 21, 2022 at 2:34 pm",
             "comment": "This idea is great! We should do more of this, this and this. Also, the mitochondria is the powerhouse of the cell.",
@@ -16,6 +17,7 @@
             "role": "Software Engineer"
         }, 
         {
+            "id": 2,
             "name": "Michelle Obama",
             "dateCreated": "Tuesday, October 22, 2022 at 4:45 pm",
             "comment": "I like it.",
@@ -28,6 +30,7 @@
             "role": "CEO"
         },
         {
+            "id": 3,
             "name": "Jack Sparrow",
             "dateCreated": "Wednesday, October 23, 2022 at 2:40 pm",
             "comment": "Maybe we could reconvene later to talk about this? I'm not sure how to proceed here.",
@@ -42,6 +45,7 @@
             "role": "HR"
         },
         {
+            "id": 4,
             "name": "Shelly Seashell",
             "dateCreated": "Thursday, October 24, 2022 at 11:20 am",
             "comment": "We definitely should be taking this product to the next level. When are you all available?",
@@ -54,6 +58,7 @@
             "role": "Product Manager"
         },
         {
+            "id": 5,
             "name": "Queen Elizabeth",
             "dateCreated": "Thursday, October 24, 2022 at 11:20 am",
             "comment": "We definitely should be taking this product to the next level. When are you all available?",
@@ -66,6 +71,7 @@
             "role": "Sagetapper"
         },
         {
+            "id": 6,
             "name": "Michael Scott",
             "dateCreated": "Thursday, October 24, 2022 at 11:20 am",
             "comment": "We definitely should be taking this product to the next level. When are you all available?",
@@ -75,7 +81,7 @@
             "likers": [],
             "acknowledged": false,
             "deleted": false,
-            "role": null
+            "role": "None"
         }
     ]
 }

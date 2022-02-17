@@ -49,7 +49,9 @@
     border-radius: 50%;
 }
 
-.num-likes:hover, .num-likes:focus {
+.num-likes:hover, .num-likes:focus, .pointer {
     cursor: pointer;
 }
+
+
 
