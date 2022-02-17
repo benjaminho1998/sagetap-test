@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Comment from '../Comment/Comment';
 import LikesDialog from '../Dialogs/Likes/Likes';
+import CommentSelectors from '../CommentSelectors/CommentSelectors';
 import './Sidebar.css';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useSelector, shallowEqual } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { addComment } from '../../store/actions/commentsAction';
+import { addComment, likeComment } from '../../store/actions/commentsAction';
 
 //Sidebar is the container for the comments and their states
 const Sidebar = (props) => {
@@ -19,6 +20,7 @@ const Sidebar = (props) => {
     const [replyMode, setReplyMode] = useState(false);
     const [openViewLikes, setOpenViewLikes] = useState(false);
     const [viewLikesObj, setViewLikesObj] = useState();
+    // const [comments, setComments] = useState([]);
 
     //Grabbing info from redux store
     const firstName = useSelector(state => state.user.user.firstName);
@@ -32,7 +34,6 @@ const Sidebar = (props) => {
 
     //Handle input functions
     const handlePostComment = () => {
-        
         const newCommentObject = {
             id: id + 1,
             name: firstName + ' ' + lastName,
@@ -82,6 +83,24 @@ const Sidebar = (props) => {
         setOpenViewLikes(false);
     };
 
+    //function to handle adding likes
+    const handleLike = useCallback((id) => {
+        const likeInfo = {
+            id: id,
+            name: firstName + ' ' + lastName
+        }
+        dispatch(likeComment(likeInfo));
+    }, [dispatch, firstName, lastName]);
+
+    //function to handle sort
+    const handleSort = useCallback((sort) => {
+        if(sort === 'Likes') {
+            comments.sort((a, b) => {
+                return b.numberOfLikes - a.numberOfLikes;
+            });
+        }
+    }, [comments]);
+
     //Helper functions
     const createDate = () => {
         let today = new Date();
@@ -116,11 +135,13 @@ const Sidebar = (props) => {
                         <Offcanvas.Title>Comments ({comments.length})</Offcanvas.Title>
                     </Offcanvas.Header>
                     <Offcanvas.Body>
+                        <CommentSelectors handleSort={handleSort} />
                         {comments.map((comment) =>
                             <Comment 
                                 key={comment.id} 
                                 handleViewLikes={handleViewLikes} 
                                 handleReply={handleReply} 
+                                handleLike={handleLike}
                                 id={comment.id} 
                                 name={comment.name} 
                                 comment={comment.comment} 
