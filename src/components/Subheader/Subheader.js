@@ -5,8 +5,10 @@ import Badge from '@mui/material/Badge';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 
+//subheader to open and close comment sidebar
 const Subheader = (props) => {
 
+    //handle function to open and close comment sidebar
     const handleShow = () => {
         props.handleShow();
     }

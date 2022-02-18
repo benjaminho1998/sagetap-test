@@ -1,3 +1,5 @@
+//all the different types of actions for the redux store
+
 export const GET_COMMENTS = 'GET_COMMENTS';
 export const COMMENTS_ERROR = 'COMMENTS_ERROR';
 export const ADD_COMMENT = 'ADD_COMMENT';

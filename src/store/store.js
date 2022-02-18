@@ -8,6 +8,7 @@ const initalState = {}
 
 const middleware = [thunk];
 
+//creates the store with the reducer, initial state and middleware
 const store = createStore(rootReducer, initalState, composeWithDevTools(applyMiddleware(...middleware)));
 
 export default store;

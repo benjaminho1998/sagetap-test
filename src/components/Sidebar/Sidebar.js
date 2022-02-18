@@ -14,13 +14,12 @@ import { addComment, likeComment } from '../../store/actions/commentsAction';
 const Sidebar = (props) => {
 
     //State init
-    const [newComment, setNewComment] = useState('');
-    const [id, setId] = useState(6);
-    const [disabled, setDisabled] = useState(true);
-    const [replyMode, setReplyMode] = useState(false);
-    const [openViewLikes, setOpenViewLikes] = useState(false);
-    const [viewLikesObj, setViewLikesObj] = useState();
-    // const [comments, setComments] = useState([]);
+    const [newComment, setNewComment] = useState(''); //newComment: string = text in comment input
+    const [id, setId] = useState(6); //id: number = id counter to give newComments an unique id
+    const [disabled, setDisabled] = useState(true); //disabled: boolean = disabled state of button depending on input
+    const [replyMode, setReplyMode] = useState(false); //replyMode: boolean = whether or not the user is replying
+    const [openViewLikes, setOpenViewLikes] = useState(false); //openViewLikes: boolean = opens dialog to see who liked a comment
+    const [viewLikesObj, setViewLikesObj] = useState(); //viewLikesObj: Comment object = the comment object whose likes will be viewed
 
     //Grabbing info from redux store
     const firstName = useSelector(state => state.user.user.firstName);
@@ -33,6 +32,7 @@ const Sidebar = (props) => {
     const dispatch = useDispatch();
 
     //Handle input functions
+    //Handles when user presses post comment
     const handlePostComment = () => {
         const newCommentObject = {
             id: id + 1,
@@ -54,6 +54,7 @@ const Sidebar = (props) => {
         setReplyMode(false);
     }
 
+    //handles when comment input is changed
     const handleNewCommentChange = (e) => {
         setNewComment(e.target.value);
     }
@@ -74,11 +75,11 @@ const Sidebar = (props) => {
     //function to handle view likes
     const handleViewLikes = useCallback((id) => {
         const likeObj = comments.find(obj => obj.id === id);
-        console.log(likeObj)
         setViewLikesObj(likeObj);
         setOpenViewLikes(true);
     }, [comments]);
 
+    //function to close view likes dialog
     const handleClose = (value) => {
         setOpenViewLikes(false);
     };
@@ -92,15 +93,6 @@ const Sidebar = (props) => {
         dispatch(likeComment(likeInfo));
     }, [dispatch, firstName, lastName]);
 
-    //function to handle sort
-    const handleSort = useCallback((sort) => {
-        if(sort === 'Likes') {
-            comments.sort((a, b) => {
-                return b.numberOfLikes - a.numberOfLikes;
-            });
-        }
-    }, [comments]);
-
     //Helper functions
     const createDate = () => {
         let today = new Date();
@@ -112,7 +104,7 @@ const Sidebar = (props) => {
         return today;
     }
     
-    //to check for button disabled value
+    //to check for button disabled value and reply mode
     useEffect(() => {
         if(newComment.length > 0) {
             setDisabled(false);
@@ -135,7 +127,7 @@ const Sidebar = (props) => {
                         <Offcanvas.Title>Comments ({comments.length})</Offcanvas.Title>
                     </Offcanvas.Header>
                     <Offcanvas.Body>
-                        <CommentSelectors handleSort={handleSort} />
+                        <CommentSelectors />
                         {comments.map((comment) =>
                             <Comment 
                                 key={comment.id} 

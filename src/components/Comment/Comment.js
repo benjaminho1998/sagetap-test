@@ -13,17 +13,16 @@ import ReplyIcon from '@mui/icons-material/Reply';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { deleteComment, acknowledgeComment } from '../../store/actions/commentsAction';
 
-const Comment = (props) => {
-    console.log('asdf')
-    
+const Comment = (props) => { 
     const dispatch = useDispatch();
 
-    const firstName = useSelector(state => state.user.user.firstName);
+    //getting states from redux store
+    const firstName = useSelector(state => state.user.user.firstName); 
     const lastName = useSelector(state => state.user.user.lastName);
     const completedTmp = useSelector(state => state.comments.comments.comments.map((comment) => comment.id === props.id && comment.acknowledged), shallowEqual);
-    const completed = completedTmp.includes(true);
-    console.log('completed', completed);
-
+    
+    //logic and formatting
+    const completed = completedTmp.includes(true); 
     const name = firstName + ' ' + lastName;
 
     //This function is from https://mui.com/components/avatars/
@@ -57,10 +56,12 @@ const Comment = (props) => {
         };
     }
 
+    //calls the prop function to raise the comment id 
     const handleReply = () => {
         props.handleReply(props.id);
     }
 
+    //calls the prop function to raise the comment id 
     const handleViewLikes = () => {
         props.handleViewLikes(props.id);
     }
@@ -70,10 +71,12 @@ const Comment = (props) => {
         props.handleLike(props.id);
     }
 
+    //dispatches action to delete comment with specific id
     const handleDelete = () => {
         dispatch(deleteComment(props.id));
     }
 
+    //dispathces action to acknowledge comment with specific id
     const handleComplete = () => {
         dispatch(acknowledgeComment(props.id));
     }
@@ -141,4 +144,5 @@ const Comment = (props) => {
     );
 };
 
+//memoized to prevent it from rerendering everytime the sidebar input changes
 export default React.memo(Comment);

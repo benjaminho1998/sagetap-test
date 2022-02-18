@@ -13,8 +13,8 @@ import MuiAlert from '@mui/material/Alert';
 const Content = React.memo(() => {
 
     //Raised the state of "show" to this component because it's used in sidebar and in subheader
-    const [show, setShow] = useState(false);
-    const [openSnackbar, setOpenSnackbar] = useState(false);
+    const [show, setShow] = useState(false); //show: boolean =  whether or not to show the sidebar
+    const [openSnackbar, setOpenSnackbar] = useState(false); //openSnackbar: boolean whether or not to show the snackbar
 
     //When Content mounts, dispatch an action to get the base comments from the store
     const dispatch = useDispatch();
@@ -23,6 +23,7 @@ const Content = React.memo(() => {
         dispatch(getComments());
     }, [dispatch]);
 
+    //Getting the comments from the redux store
     const commentsList = useSelector(state => state.comments, shallowEqual);
     const {loading, error, comments} = commentsList;
     const tmpComments = comments.comments;
@@ -37,10 +38,12 @@ const Content = React.memo(() => {
         return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
     });
 
+    //handle opening the snackbar
     const handleClick = () => {
         setOpenSnackbar(true);
     };
 
+    //handle closing the snackbar
     const handleClose = (event, reason) => {
         if(reason === 'clickaway') {
             return;
