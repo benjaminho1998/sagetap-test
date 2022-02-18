@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -6,30 +6,20 @@ import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
 import './CommentSelectors.css';
 
-//Drop down selectors to sort and filter comments
-//Has not been fully implemented
+//Drop down selectors to sort comments
 const CommentSelectors = (props) => {
 
     const [sort, setSort] = useState(''); //sort: string = gets the value from the sort dropdown
-    const [filter, setFilter] = useState(''); //filter: sting = gets value from filter dropdown
 
     //handles change in sort dropdown
     const handleSortChange = (event) => {
         setSort(event.target.value);
     };
 
+    //handles when user clicks apply
     const handleApply = () => {
-        props.handleSort('Likes');
-    }
-
-    //handles change in filter dropdown
-    const handleFilterChange = (event) => {
-        setFilter(event.target.value);
-    };
-
-    // useEffect(() => {
-    //     props.handleSort(sort);
-    // }, [props, sort])    
+        props.handleSort(sort);
+    } 
 
     return (
         <div className='sort'>
@@ -42,9 +32,11 @@ const CommentSelectors = (props) => {
                     label="Sort"
                     onChange={handleSortChange}
                 >
-                    <MenuItem value='Likes'>Likes</MenuItem>
-                    <MenuItem value='Name'>Name</MenuItem>
-                    <MenuItem value='Date'>Date</MenuItem>
+                    <MenuItem value='idLow'>Reset</MenuItem>
+                    <MenuItem value='numberOfLikes'>Likes</MenuItem>
+                    <MenuItem value='nameLow'>Name</MenuItem>
+                    <MenuItem value='id'>Most Recent</MenuItem>
+                    <MenuItem value='roleLow'>Role</MenuItem>
                 </Select>
             </FormControl>
             <Button style={{marginLeft: '5px'}} onClick={handleApply}>Apply</Button>

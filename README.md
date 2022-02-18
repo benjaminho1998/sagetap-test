@@ -24,6 +24,9 @@ The objective of this project is to create a sidebar for builders to leave comme
     - View likes
     - Like counter
     - Sort by likes
+    - Sort by role
+    - Sort by most recent
+    - Reset sort
     - Completing comments
     - Pinning comments
     - Active user only comment deleting
@@ -35,6 +38,7 @@ The objective of this project is to create a sidebar for builders to leave comme
     - Active user name in comment box
     - Clear comment box
     - Feedback after updating user
+    - Feedback after pinnning comment
     - Number of comments in subheader and sidebar header
     - Loading messaging before data loads
     - Change User
@@ -58,3 +62,6 @@ The objective of this project is to create a sidebar for builders to leave comme
 - Un-completing
 - Unit tests
 - Persistence of icon states through sidebar unmount
+- Not sorting pinned comments
+- Un-pinning
+- TypeScript

@@ -16,11 +16,32 @@ const commentsReducer = (state = initialState, action) => {
                 loading: false
             }
         case SORT_COMMENTS:
+            let sort = action.payload;
+            let low = false;
+            if(sort.slice(sort.length - 3) === 'Low') {
+                low = true;
+                sort = sort.slice(0, sort.length - 3);
+            } else {
+                low = false;
+            }
             return {
                 ...state,
                 comments: {
                     comments: [...state.comments.comments.sort((a, b) => {
-                        return b[action.payload] - a[action.payload]
+                        if(sort === 'name' || sort === 'role') {
+                            const nameA = a[sort].toLowerCase();
+                            const nameB = b[sort].toLowerCase();
+                            if (nameA < nameB) {
+                                return -1;
+                            }
+                            if (nameA > nameB) {
+                                return 1;
+                            }
+                            return 0;
+                        }
+                        return low ?
+                            a[sort] - b[sort] :
+                            b[sort] - a[sort]
                     })]
                 }
             }

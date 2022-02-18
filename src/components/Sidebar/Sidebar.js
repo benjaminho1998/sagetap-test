@@ -119,13 +119,9 @@ const Sidebar = (props) => {
         dispatch(unlikeComment(likeInfo));
     }, [dispatch, firstName, lastName]);
 
-    const handleCloseSidebar = () => {
-        props.handleShow();
-    }
-
     const handleSort = useCallback((sort) => {
-        if(sort === 'Likes') {
-            dispatch(sortComments('numberOfLikes'))
+        if(sort) {
+            dispatch(sortComments(sort));
         }
     }, [dispatch]);
 
