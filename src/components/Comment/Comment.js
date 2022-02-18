@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Comment.css';
 import Card from 'react-bootstrap/Card';
 import Avatar from '@mui/material/Avatar';
@@ -10,11 +10,14 @@ import trash2 from 'react-useanimations/lib/trash2';
 import Tooltip from '@mui/material/Tooltip';
 import Chip from '@mui/material/Chip';
 import ReplyIcon from '@mui/icons-material/Reply';
+import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
-import { deleteComment, acknowledgeComment } from '../../store/actions/commentsAction';
+import { deleteComment, acknowledgeComment, pinComment } from '../../store/actions/commentsAction';
 
 const Comment = (props) => { 
     const dispatch = useDispatch();
+
+    const [pinned, setPinned] = useState(false);
 
     //getting states from redux store
     const firstName = useSelector(state => state.user.user.firstName); 
@@ -76,9 +79,15 @@ const Comment = (props) => {
         dispatch(deleteComment(props.id));
     }
 
-    //dispathces action to acknowledge comment with specific id
+    //dispatches action to acknowledge comment with specific id
     const handleComplete = () => {
         dispatch(acknowledgeComment(props.id));
+    }
+
+    //dispatches action to pin comment with specific id
+    const handlePin = () => {
+        setPinned(true);
+        dispatch(pinComment(props.id));
     }
 
     return (
@@ -111,6 +120,9 @@ const Comment = (props) => {
                         {completed &&
                             <Chip label="Completed" color="success" size='small' variant='outlined' style={{marginLeft: '10px'}} />
                         }
+                        {pinned &&
+                            <Chip label="Pinned" color="warning" size='small' variant='outlined' style={{marginLeft: completed ? '5px': '10px'}} />
+                        }
                     </div>
                     <div className='footer-sub'>
                         <Tooltip title='Reply to Comment'>
@@ -137,6 +149,11 @@ const Comment = (props) => {
                                 </Tooltip>
                             </div>
                         }
+                        <Tooltip title='Pin Comment'>
+                            <div>
+                                <PushPinOutlinedIcon onClick={handlePin} className='pointer'></PushPinOutlinedIcon>
+                            </div>
+                        </Tooltip>
                     </div>
                 </div>
             </Card.Body>

@@ -17,11 +17,13 @@ The objective of this project is to create a sidebar for builders to leave comme
     - Commenting
     - Replying
 - Additional Features
+    - Fully responsive
     - Creating/updating a user
     - Liking
     - View likes
     - Like counter
     - Completing comments
+    - Pinning comments
     - Active user only comment deleting
     - Role within builder organization
     - Sagetapper identifier

@@ -1,4 +1,4 @@
-import { GET_COMMENTS, COMMENTS_ERROR, ADD_COMMENT, LIKE_COMMENT, DELETE_COMMENT, ACKNOWLEDGE_COMMENT } from '../types';
+import { GET_COMMENTS, COMMENTS_ERROR, ADD_COMMENT, LIKE_COMMENT, DELETE_COMMENT, ACKNOWLEDGE_COMMENT, PIN_COMMENT } from '../types';
 
 //initial state for the comments
 const initialState = {
@@ -46,6 +46,13 @@ const commentsReducer = (state = initialState, action) => {
                     comments: state.comments.comments.map(
                         (comment) => comment.id === action.payload ? {...comment, acknowledged: true} : comment
                     )
+                }
+            } 
+        case PIN_COMMENT:
+            return {
+                ...state,
+                comments: {
+                    comments: [...state.comments.comments.filter((comment) => comment.id === action.payload), ...state.comments.comments.filter((comment) => comment.id !== action.payload)]
                 }
             } 
         case COMMENTS_ERROR:

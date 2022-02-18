@@ -47,9 +47,9 @@ const CommentSelectors = () => {
                     label="Filter"
                     onChange={handleFilterChange}
                 >
-                    <MenuItem value='Name'>Name</MenuItem>
-                    <MenuItem value='Completion'>Completion</MenuItem>
-                    <MenuItem value='Date'>Date</MenuItem>
+                    <MenuItem value='Completed'>Completed</MenuItem>
+                    <MenuItem value='Liked'>Liked</MenuItem>
+                    <MenuItem value='Posted Today'>Posted Today</MenuItem>
                 </Select>
             </FormControl>
         </div>
