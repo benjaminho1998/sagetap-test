@@ -28,6 +28,8 @@ The objective of this project is to create a sidebar for builders to leave comme
     - Active user only comment deleting
     - Role within builder organization
     - Sagetapper identifier
+    - Add comment floating icon
+    - Scroll to top
     - Button disables
     - Active user name in comment box
     - Clear comment box
