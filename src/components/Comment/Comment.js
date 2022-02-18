@@ -26,6 +26,7 @@ const Comment = (props) => {
 
     const [pinned, setPinned] = useState(false);
     const [openSnackbar, setOpenSnackbar] = useState(false);
+    const [liked, setLiked] = useState(false);
 
     //getting states from redux store
     const firstName = useSelector(state => state.user.user.firstName); 
@@ -79,7 +80,13 @@ const Comment = (props) => {
 
     //Could just send to redux, but also want active user name, so send to Sidebar then to redux
     const handleLike = () => {
-        props.handleLike(props.id);
+        if(liked) {
+            setLiked(false);
+            props.handleUnlike(props.id, -1);
+        } else {
+            setLiked(true);
+            props.handleLike(props.id, 1);
+        }
     }
 
     //dispatches action to delete comment with specific id

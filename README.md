@@ -20,6 +20,7 @@ The objective of this project is to create a sidebar for builders to leave comme
     - Fully responsive
     - Creating/updating a user
     - Liking
+    - Unliking
     - View likes
     - Like counter
     - Completing comments
@@ -51,6 +52,6 @@ The objective of this project is to create a sidebar for builders to leave comme
 ### Potential Future Additions
 - Functionality of sort and filter dropdowns
 - Editing comments
-- Unliking
 - Un-completing
 - Unit tests
+- Persistence of icon states through sidebar unmount

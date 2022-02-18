@@ -8,7 +8,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useSelector, shallowEqual } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { addComment, likeComment } from '../../store/actions/commentsAction';
+import { addComment, likeComment, unlikeComment } from '../../store/actions/commentsAction';
 
 //Sidebar is the container for the comments and their states
 const Sidebar = (props) => {
@@ -85,12 +85,23 @@ const Sidebar = (props) => {
     };
 
     //function to handle adding likes
-    const handleLike = useCallback((id) => {
+    const handleLike = useCallback((id, num) => {
         const likeInfo = {
             id: id,
-            name: firstName + ' ' + lastName
+            name: firstName + ' ' + lastName,
+            num: num
         }
         dispatch(likeComment(likeInfo));
+    }, [dispatch, firstName, lastName]);
+
+    //function to handle adding likes
+    const handleUnlike = useCallback((id, num) => {
+        const likeInfo = {
+            id: id,
+            name: firstName + ' ' + lastName,
+            num: num
+        }
+        dispatch(unlikeComment(likeInfo));
     }, [dispatch, firstName, lastName]);
 
     const handleCloseSidebar = () => {
@@ -141,6 +152,7 @@ const Sidebar = (props) => {
                                 handleViewLikes={handleViewLikes} 
                                 handleReply={handleReply} 
                                 handleLike={handleLike}
+                                handleUnlike={handleUnlike}
                                 id={comment.id} 
                                 name={comment.name} 
                                 comment={comment.comment} 

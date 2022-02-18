@@ -1,4 +1,4 @@
-import { GET_COMMENTS, COMMENTS_ERROR, ADD_COMMENT, LIKE_COMMENT, DELETE_COMMENT, ACKNOWLEDGE_COMMENT, PIN_COMMENT } from '../types'
+import { GET_COMMENTS, COMMENTS_ERROR, ADD_COMMENT, LIKE_COMMENT, DELETE_COMMENT, ACKNOWLEDGE_COMMENT, PIN_COMMENT, UNLIKE_COMMENT } from '../types'
 import axios from 'axios';
 
 //container for comment actions
@@ -28,6 +28,13 @@ export const addComment = (comment) => dispatch => {
 export const likeComment = (likeInfo) => dispatch => {
     dispatch({
         type: LIKE_COMMENT,
+        payload: likeInfo
+    });
+}
+
+export const unlikeComment = (likeInfo) => dispatch => {
+    dispatch({
+        type: UNLIKE_COMMENT,
         payload: likeInfo
     });
 }
