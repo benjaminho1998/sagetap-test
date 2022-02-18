@@ -6,6 +6,11 @@ import './Sidebar.css';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import Fab from '@mui/material/Fab';
+import Tooltip from '@mui/material/Tooltip';
+import AddIcon from '@mui/icons-material/Add';
+import IconButton from '@mui/material/IconButton';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import { useSelector, shallowEqual } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { addComment, likeComment, unlikeComment } from '../../store/actions/commentsAction';
@@ -32,6 +37,18 @@ const Sidebar = (props) => {
     const dispatch = useDispatch();
 
     //Handle input functions
+
+    //Scrolls to bottom and focuses on input
+    const scrollToAdd = () => {
+        document.getElementById("focused").focus();
+    }
+
+    //Scrolls to top
+    const scrollToTop = () => {
+        const top = document.getElementById('containerDiv');
+        top.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
     //Handles when user presses post comment
     const handlePostComment = () => {
         const newCommentObject = {
@@ -144,7 +161,7 @@ const Sidebar = (props) => {
                             <Button onClick={handleCloseSidebar} variant="text">Change User</Button>
                         </Offcanvas.Title>
                     </Offcanvas.Header>
-                    <Offcanvas.Body>
+                    <Offcanvas.Body id='containerDiv'>
                         <CommentSelectors />
                         {comments.map((comment) =>
                             <Comment 
@@ -161,6 +178,20 @@ const Sidebar = (props) => {
                                 role={comment.role} 
                             />
                         )}
+                        <div className='centered'>
+                            <Tooltip title='Scroll to Top'>
+                                <IconButton
+                                    aria-label="scroll to top"
+                                    onClick={scrollToTop}
+                                    sx={{
+                                        marginBottom: '10px',
+                                        marginRight: '5px',
+                                    }}
+                                    >
+                                    <ArrowUpwardIcon />
+                                </IconButton>
+                            </Tooltip>
+                        </div>
                         <TextField
                             id='focused'
                             onChange={handleNewCommentChange}
@@ -180,6 +211,11 @@ const Sidebar = (props) => {
                             onClose={handleClose}
                             commentObj={viewLikesObj}
                         />
+                        <Tooltip title='Add Comment'>
+                            <Fab onClick={scrollToAdd} color="primary" aria-label="add comment" style={{position: 'fixed', top: 92.5, right: 52.5}}>
+                                <AddIcon />
+                            </Fab>
+                        </Tooltip>
                     </Offcanvas.Body>
                 </Offcanvas>
             }
