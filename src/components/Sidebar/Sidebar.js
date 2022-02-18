@@ -11,7 +11,7 @@ import Tooltip from '@mui/material/Tooltip';
 import AddIcon from '@mui/icons-material/Add';
 import { useSelector, shallowEqual } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { addComment, likeComment, unlikeComment } from '../../store/actions/commentsAction';
+import { addComment, likeComment, unlikeComment, sortComments } from '../../store/actions/commentsAction';
 
 //Sidebar is the container for the comments and their states
 const Sidebar = (props) => {
@@ -123,6 +123,12 @@ const Sidebar = (props) => {
         props.handleShow();
     }
 
+    const handleSort = useCallback((sort) => {
+        if(sort === 'Likes') {
+            dispatch(sortComments('numberOfLikes'))
+        }
+    }, [dispatch]);
+
     //Helper functions
     const createDate = () => {
         let today = new Date();
@@ -156,11 +162,10 @@ const Sidebar = (props) => {
                     <Offcanvas.Header closeButton>
                         <Offcanvas.Title>
                             <span>Comments ({comments.length})</span>
-                            <Button onClick={handleCloseSidebar} variant="text">Change User</Button>
                         </Offcanvas.Title>
                     </Offcanvas.Header>
                     <Offcanvas.Body id='containerDiv'>
-                        <CommentSelectors />
+                        <CommentSelectors handleSort={handleSort} />
                         {comments.map((comment) =>
                             <Comment 
                                 key={comment.id} 
@@ -201,7 +206,7 @@ const Sidebar = (props) => {
                             commentObj={viewLikesObj}
                         />
                         <Tooltip title='Add Comment'>
-                            <Fab onClick={scrollToAdd} color="primary" aria-label="add comment" style={{position: 'fixed', top: 92.5, right: 52.5}}>
+                            <Fab onClick={scrollToAdd} color="primary" aria-label="add comment" style={{position: 'fixed', top: 82.5, right: 32.5}}>
                                 <AddIcon />
                             </Fab>
                         </Tooltip>

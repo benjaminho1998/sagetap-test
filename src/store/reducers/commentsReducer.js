@@ -1,4 +1,4 @@
-import { GET_COMMENTS, COMMENTS_ERROR, ADD_COMMENT, LIKE_COMMENT, DELETE_COMMENT, ACKNOWLEDGE_COMMENT, PIN_COMMENT, UNLIKE_COMMENT } from '../types';
+import { GET_COMMENTS, SORT_COMMENTS, COMMENTS_ERROR, ADD_COMMENT, LIKE_COMMENT, DELETE_COMMENT, ACKNOWLEDGE_COMMENT, PIN_COMMENT, UNLIKE_COMMENT } from '../types';
 
 //initial state for the comments
 const initialState = {
@@ -14,6 +14,15 @@ const commentsReducer = (state = initialState, action) => {
                 ...state,
                 comments: action.payload,
                 loading: false
+            }
+        case SORT_COMMENTS:
+            return {
+                ...state,
+                comments: {
+                    comments: [...state.comments.comments.sort((a, b) => {
+                        return b[action.payload] - a[action.payload]
+                    })]
+                }
             }
         case ADD_COMMENT:
             return {
