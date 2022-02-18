@@ -33,6 +33,7 @@ The objective of this project is to create a sidebar for builders to leave comme
     - Feedback after updating user
     - Number of comments in subheader and sidebar header
     - Loading messaging before data loads
+    - Change User
 
 ### Tech
 - React
@@ -50,7 +51,6 @@ The objective of this project is to create a sidebar for builders to leave comme
 ### Potential Future Additions
 - Functionality of sort and filter dropdowns
 - Editing comments
-- Pinning comments
 - Unliking
 - Un-completing
 - Unit tests

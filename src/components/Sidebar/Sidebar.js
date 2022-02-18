@@ -93,6 +93,10 @@ const Sidebar = (props) => {
         dispatch(likeComment(likeInfo));
     }, [dispatch, firstName, lastName]);
 
+    const handleCloseSidebar = () => {
+        props.handleShow();
+    }
+
     //Helper functions
     const createDate = () => {
         let today = new Date();
@@ -124,7 +128,10 @@ const Sidebar = (props) => {
             {comments.length > 0 &&
                 <Offcanvas show={props.show} onHide={props.handleShow} placement='end' backdrop={false}>
                     <Offcanvas.Header closeButton>
-                        <Offcanvas.Title>Comments ({comments.length})</Offcanvas.Title>
+                        <Offcanvas.Title>
+                            <span>Comments ({comments.length})</span>
+                            <Button onClick={handleCloseSidebar} variant="text">Change User</Button>
+                        </Offcanvas.Title>
                     </Offcanvas.Header>
                     <Offcanvas.Body>
                         <CommentSelectors />
@@ -143,15 +150,15 @@ const Sidebar = (props) => {
                             />
                         )}
                         <TextField
-                                id='focused'
-                                onChange={handleNewCommentChange}
-                                name='newComment'
-                                value={newComment}
-                                fullWidth
-                                label={addCommentInput}
-                                multiline
-                                rows={6}
-                            />
+                            id='focused'
+                            onChange={handleNewCommentChange}
+                            name='newComment'
+                            value={newComment}
+                            fullWidth
+                            label={addCommentInput}
+                            multiline
+                            rows={6}
+                        />
                         <div className='bottom-buttons'>
                             <Button onClick={handleClearText} variant="text">Clear</Button>
                             <Button disabled={disabled} onClick={handlePostComment} style={{marginTop: '10px'}} variant="contained">Post Comment</Button>

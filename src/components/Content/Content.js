@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './Content.css';
 import Subheader from '../Subheader/Subheader';
 import Sidebar from '../Sidebar/Sidebar';
@@ -29,9 +29,9 @@ const Content = React.memo(() => {
     const tmpComments = comments.comments;
 
     //Sets the show state variable to the opposite of what it currently is
-    const handleShow = () => {
+    const handleShow = useCallback(() => {
         setShow(!show);
-    };
+    }, [show]);
 
     //Snackbar code
     const Alert = React.forwardRef(function Alert(props, ref) {
