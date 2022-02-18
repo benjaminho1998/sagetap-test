@@ -94,7 +94,7 @@ const Sidebar = (props) => {
         dispatch(likeComment(likeInfo));
     }, [dispatch, firstName, lastName]);
 
-    //function to handle adding likes
+    //function to handle unliking
     const handleUnlike = useCallback((id, num) => {
         const likeInfo = {
             id: id,
