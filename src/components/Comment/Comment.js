@@ -9,6 +9,8 @@ import edit from 'react-useanimations/lib/edit';
 import trash2 from 'react-useanimations/lib/trash2';
 import Tooltip from '@mui/material/Tooltip';
 import Chip from '@mui/material/Chip';
+import MuiAlert from '@mui/material/Alert';
+import Snackbar from '@mui/material/Snackbar';
 import ReplyIcon from '@mui/icons-material/Reply';
 import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
@@ -17,7 +19,13 @@ import { deleteComment, acknowledgeComment, pinComment } from '../../store/actio
 const Comment = (props) => { 
     const dispatch = useDispatch();
 
+    //Snackbar code
+    const Alert = React.forwardRef(function Alert(props, ref) {
+        return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+    });
+
     const [pinned, setPinned] = useState(false);
+    const [openSnackbar, setOpenSnackbar] = useState(false);
 
     //getting states from redux store
     const firstName = useSelector(state => state.user.user.firstName); 
@@ -87,8 +95,18 @@ const Comment = (props) => {
     //dispatches action to pin comment with specific id
     const handlePin = () => {
         setPinned(true);
+        setOpenSnackbar(true);
         dispatch(pinComment(props.id));
     }
+
+    //handle closing the snackbar
+    const handleCloseSnackbar = (event, reason) => {
+        if(reason === 'clickaway') {
+            return;
+        }
+
+        setOpenSnackbar(false);
+    };
 
     return (
         <Card className='spacing' style={{outline: completed && '1px solid green'}}>
@@ -157,6 +175,11 @@ const Comment = (props) => {
                     </div>
                 </div>
             </Card.Body>
+            <Snackbar open={openSnackbar} autoHideDuration={6000} onClose={handleCloseSnackbar}>
+                <Alert onClose={handleCloseSnackbar} severity="success" sx={{ width: '100%' }}>
+                    Comment pinned!
+                </Alert>
+            </Snackbar>
         </Card>
     );
 };
