@@ -10,23 +10,26 @@ import Button from '@mui/material/Button';
 import { useDispatch } from 'react-redux';
 import { updateUser } from '../../store/actions/userAction';
 
+//Creates/updates active user based on user input
 const CreateUser = (props) => {
 
+    //Constants init
+    const dispatch = useDispatch();
     const roles = ['None', 'Sagetapper', 'Software Engeinner', 'Product Manager', 'CEO', 'Sales', 'HR', 'Marketing', 'Business Analyst', 'Manager', 'Intern', 'Product Design'];
 
-    const [role, setRole] = useState('');
-    const [firstName, setFirstName] = useState('');
+    //State init
+    const [role, setRole] = useState(''); //role: string = the selected role
+    const [firstName, setFirstName] = useState(''); 
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
+    const [disabled, setDisabled] = useState(true); //disabled: boolean = disabled state of button
 
-    const [disabled, setDisabled] = useState(true);
-
+    //Handles when the role is selected from the dropdown
     const handleRoleChange = (event) => {
         setRole(event.target.value);
     };
 
-    const dispatch = useDispatch();
-
+    //Handles when user submits new active user
     const handleUserSubmit = () => {
         //Calls prop function to show snackbar in content component
         props.handleClick();
@@ -37,10 +40,10 @@ const CreateUser = (props) => {
             email: email,
             role: role
         };
-        console.log('user', user)
         dispatch(updateUser(user));
     }
 
+    //handles changes in text fields
     const handleTextChange = (e) => {
         const input = e.target.value;
         const field = e.target.name;
@@ -55,6 +58,7 @@ const CreateUser = (props) => {
         }
     }
 
+    //handles disabled button value
     useEffect(() => {
         if(firstName.length > 0 && lastName.length > 0 && email.length > 0 && role.length > 0) {
             setDisabled(false);

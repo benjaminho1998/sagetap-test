@@ -1,6 +1,7 @@
 import { GET_COMMENTS, COMMENTS_ERROR, ADD_COMMENT, LIKE_COMMENT, DELETE_COMMENT, ACKNOWLEDGE_COMMENT } from '../types'
 import axios from 'axios';
 
+//container for comment actions
 export const getComments = () => async dispatch => {
     try{
         const res = await axios.get('comments.json');

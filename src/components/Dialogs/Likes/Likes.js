@@ -13,17 +13,15 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import { blue } from '@mui/material/colors';
 
-const LikesDialog = (props) => {
-  const { onClose, selectedValue, open } = props;
 
-  const handleClose = () => {
-    onClose(selectedValue);
-  };
+//Dialog that displays the names of people who've liked a particular comment
+const LikesDialog = (props) => {
+  const { onClose, open } = props;
 
   return (
     <div>
         {props.commentObj &&
-            <Dialog onClose={handleClose} open={open}>
+            <Dialog onClose={onClose} open={open}>
                 <DialogTitle>
                     <div className='title-likes'>Likes</div>
                     <div>

@@ -1,10 +1,12 @@
 import { GET_COMMENTS, COMMENTS_ERROR, ADD_COMMENT, LIKE_COMMENT, DELETE_COMMENT, ACKNOWLEDGE_COMMENT } from '../types';
 
+//initial state for the comments
 const initialState = {
     comments: [],
     loading: true
 }
 
+//takes an action and changes the store according to the action
 const commentsReducer = (state = initialState, action) => {
     switch(action.type){
         case GET_COMMENTS:
@@ -29,7 +31,6 @@ const commentsReducer = (state = initialState, action) => {
                         (comment) => comment.id === action.payload.id ? {...comment, numberOfLikes: comment.numberOfLikes + 1, likers: [...comment.likers, action.payload.name]} : comment
                     )
                 }
-                
             }   
         case DELETE_COMMENT:
             return {
@@ -39,7 +40,6 @@ const commentsReducer = (state = initialState, action) => {
                 }
             }     
         case ACKNOWLEDGE_COMMENT:
-            console.log('FUCK')
             return {
                 ...state,
                 comments: {

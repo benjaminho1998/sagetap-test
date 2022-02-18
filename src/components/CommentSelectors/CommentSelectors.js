@@ -1,26 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import './CommentSelectors.css';
+import React, { useState } from 'react';
 import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 
-const CommentSelectors = (props) => {
 
-    const [sort, setSort] = useState('');
-    const [filter, setFilter] = useState('');
+//Drop down selectors to sort and filter comments
+//Has not been fully implemented
+const CommentSelectors = () => {
 
+    const [sort, setSort] = useState(''); //sort: string = gets the value from the sort dropdown
+    const [filter, setFilter] = useState(''); //filter: sting = gets value from filter dropdown
+
+    //handles change in sort dropdown
     const handleSortChange = (event) => {
         setSort(event.target.value);
     };
 
+    //handles change in filter dropdown
     const handleFilterChange = (event) => {
         setFilter(event.target.value);
     };
-
-    useEffect(() => {
-        props.handleSort(sort);
-    }, [sort, filter, props])
 
     return (
         <div>

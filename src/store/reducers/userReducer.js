@@ -1,5 +1,6 @@
 import { UPDATE_USER } from '../types';
 
+//intial state for the active user
 const initialState = {
     user: {
         firstName: 'Example',
@@ -9,6 +10,7 @@ const initialState = {
     }
 }
 
+//takes an action and changes the store according to the action
 const userReducer = (state = initialState, action) => {
     switch(action.type){
         case UPDATE_USER:
