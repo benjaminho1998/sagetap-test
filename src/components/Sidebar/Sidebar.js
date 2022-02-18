@@ -9,8 +9,6 @@ import Button from '@mui/material/Button';
 import Fab from '@mui/material/Fab';
 import Tooltip from '@mui/material/Tooltip';
 import AddIcon from '@mui/icons-material/Add';
-import IconButton from '@mui/material/IconButton';
-import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import { useSelector, shallowEqual } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { addComment, likeComment, unlikeComment } from '../../store/actions/commentsAction';
@@ -180,16 +178,7 @@ const Sidebar = (props) => {
                         )}
                         <div className='centered'>
                             <Tooltip title='Scroll to Top'>
-                                <IconButton
-                                    aria-label="scroll to top"
-                                    onClick={scrollToTop}
-                                    sx={{
-                                        marginBottom: '10px',
-                                        marginRight: '5px',
-                                    }}
-                                    >
-                                    <ArrowUpwardIcon />
-                                </IconButton>
+                                <Button sx={{marginBottom: '12px', marginRight: '7px'}}onClick={scrollToTop}>Back to Top</Button>
                             </Tooltip>
                         </div>
                         <TextField
