@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Comment.css';
+import AvatarIcon from '../AvatarIcon/AvatarIcon';
 import Card from 'react-bootstrap/Card';
-import Avatar from '@mui/material/Avatar';
 import UseAnimations from 'react-useanimations';
 import heart from 'react-useanimations/lib/heart';
 import checkBox from 'react-useanimations/lib/checkBox';
@@ -37,74 +37,43 @@ const Comment = (props) => {
     const completed = completedTmp.includes(true); 
     const name = firstName + ' ' + lastName;
 
-    //This function is from https://mui.com/components/avatars/
-    //It chooses a different color for the avatar depending on the name
-    const stringToColor = (string) => {
-        let hash = 0;
-        let i;
-
-        for (i = 0; i < string.length; i += 1) {
-            hash = string.charCodeAt(i) + ((hash << 5) - hash);
-        }
-
-        let color = '#';
-
-        for (i = 0; i < 3; i += 1) {
-            const value = (hash >> (i * 8)) & 0xff;
-            color += `00${value.toString(16)}`.substr(-2);
-        }
-
-        return color;
-    }
-
-    //This function is from https://mui.com/components/avatars/
-    //It gives each avatar the css styles to change the background color
-    const stringAvatar = (name) => {
-        return {
-            sx: {
-                bgcolor: stringToColor(name),
-            },
-            children: `${name.split(' ')[0][0]}${name.split(' ')[1][0]}`,
-        };
-    }
-
     //calls the prop function to raise the comment id 
     const handleReply = () => {
         props.handleReply(props.id);
-    }
+    };
 
     //calls the prop function to raise the comment id 
     const handleViewLikes = () => {
         props.handleViewLikes(props.id);
-    }
+    };
 
     //Could just send to redux, but also want active user name, so send to Sidebar then to redux
     const handleLike = () => {
         if(liked) {
             setLiked(false);
-            props.handleUnlike(props.id, -1);
+            props.handleike(props.id, -1);
         } else {
             setLiked(true);
             props.handleLike(props.id, 1);
         }
-    }
+    };
 
     //dispatches action to delete comment with specific id
     const handleDelete = () => {
         dispatch(deleteComment(props.id));
-    }
+    };
 
     //dispatches action to acknowledge comment with specific id
     const handleComplete = () => {
         dispatch(acknowledgeComment(props.id));
-    }
+    };
 
     //dispatches action to pin comment with specific id
     const handlePin = () => {
         setPinned(true);
         setOpenSnackbar(true);
         dispatch(pinComment(props.id));
-    }
+    };
 
     //handle closing the snackbar
     const handleCloseSnackbar = (event, reason) => {
@@ -119,7 +88,7 @@ const Comment = (props) => {
         <Card className='spacing' style={{outline: completed && '1px solid green'}}>
             <Card.Body>
                 <Card.Title className='comment-header'>
-                    <Avatar style={{width: '45px', height: '45px'}} {...stringAvatar(props.name)} />
+                    <AvatarIcon name={props.name} />
                     <div className='comment-name-date'>
                         <div className='name'>
                             {props.name} 

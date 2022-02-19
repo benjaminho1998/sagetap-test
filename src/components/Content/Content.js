@@ -57,8 +57,8 @@ const Content = React.memo(() => {
             {loading 
                 ? 'Loading'
                 : error 
-                    ? error.message
-                    :<div>
+                    ? error.message :
+                    <div>
                         <Subheader commentsLength={tmpComments.length} handleShow={handleShow} />
                         <Sidebar show={show} handleShow={handleShow} />
                         <div className='centered'>

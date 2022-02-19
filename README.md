@@ -7,8 +7,8 @@ The objective of this project is to create a sidebar for builders to leave comme
 
 ### How to Run
 - clone repo
-- run `npm i`
-- run `npm start`
+- run `yarn`
+- run `yarn start`
 - navigate to localhost:3000
 
 ### Features
