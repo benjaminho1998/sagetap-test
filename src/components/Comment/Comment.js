@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './Comment.css';
 import AvatarIcon from '../AvatarIcon/AvatarIcon';
+import CommentIcon from '../CommentIcon/CommentIcon';
 import Card from 'react-bootstrap/Card';
-import UseAnimations from 'react-useanimations';
 import heart from 'react-useanimations/lib/heart';
 import checkBox from 'react-useanimations/lib/checkBox';
 import edit from 'react-useanimations/lib/edit';
@@ -24,9 +24,10 @@ const Comment = (props) => {
         return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
     });
 
-    const [pinned, setPinned] = useState(false);
-    const [openSnackbar, setOpenSnackbar] = useState(false);
-    const [liked, setLiked] = useState(false);
+    //State init
+    const [pinned, setPinned] = useState(false); //pinned: boolean = pinned state of comment
+    const [openSnackbar, setOpenSnackbar] = useState(false); //openSnackbar: boolean = snackbar state for pinning action
+    const [liked, setLiked] = useState(false); //liked: boolean = liked state of comment
 
     //getting states from redux store
     const firstName = useSelector(state => state.user.user.firstName); 
@@ -51,7 +52,7 @@ const Comment = (props) => {
     const handleLike = () => {
         if(liked) {
             setLiked(false);
-            props.handleike(props.id, -1);
+            props.handleLike(props.id, -1);
         } else {
             setLiked(true);
             props.handleLike(props.id, 1);
@@ -101,11 +102,7 @@ const Comment = (props) => {
                 <Card.Text className='comment-text'>{props.comment}</Card.Text>
                 <div className='footer'>
                     <div className='footer-sub'>
-                        <Tooltip title='Like Comment'>
-                            <div>
-                                <UseAnimations className='pointer' onClick={handleLike} size={30} strokeColor='red' fillColor='red' animation={heart} />
-                            </div>
-                        </Tooltip>
+                        <CommentIcon handleFunction={handleLike} icon='heart' animation={heart} />
                         {props.numberOfLikes > 0 && 
                             <Tooltip title='View Likes'>
                                 <div onClick={handleViewLikes} className='num-likes'>{props.numberOfLikes}</div>
@@ -124,23 +121,11 @@ const Comment = (props) => {
                                 <ReplyIcon onClick={handleReply} className='pointer'></ReplyIcon>
                             </div>
                         </Tooltip>
-                        <Tooltip title='Mark as Complete'>
-                            <div>
-                                <UseAnimations onClick={handleComplete} className='pointer' size={30} animation={checkBox} />
-                            </div>
-                        </Tooltip>
+                        <CommentIcon handleFunction={handleComplete} icon='checkBox' animation={checkBox} />
                         {props.name === name &&
                             <div className='hidden-icons'>
-                                <Tooltip title='Edit Comment'>
-                                    <div>
-                                        <UseAnimations className='pointer' size={34} animation={edit} />
-                                    </div>
-                                </Tooltip>
-                                <Tooltip title='Delete Comment'>
-                                    <div className='trash-icon'>
-                                        <UseAnimations onClick={handleDelete} className='pointer' size={30} animation={trash2} />
-                                    </div>
-                                </Tooltip>
+                                <CommentIcon handleFunction={null} icon='edit' animation={edit} />
+                                <CommentIcon handleFunction={handleDelete} icon='trash2' animation={trash2} />
                             </div>
                         }
                         <Tooltip title='Pin Comment'>
