@@ -16,7 +16,7 @@ import { addComment, likeComment, unlikeComment, sortComments } from '../../stor
 //Sidebar is the container for the comments and their states
 const Sidebar = (props) => {
 
-    //State init
+    //State init. Didn't want to put these in redux so I kept the state up here
     const [newComment, setNewComment] = useState(''); //newComment: string = text in comment input
     const [id, setId] = useState(6); //id: number = id counter to give newComments an unique id
     const [disabled, setDisabled] = useState(true); //disabled: boolean = disabled state of button depending on input
@@ -35,7 +35,6 @@ const Sidebar = (props) => {
     const dispatch = useDispatch();
 
     //Handle input functions
-
     //Scrolls to bottom and focuses on input
     const scrollToAdd = () => {
         document.getElementById("focused").focus();
@@ -153,60 +152,66 @@ const Sidebar = (props) => {
 
     return (
         <div>
-            {comments.length > 0 &&
-                <Offcanvas show={props.show} onHide={props.handleShow} placement='end' backdrop={false}>
-                    <Offcanvas.Header closeButton>
-                        <Offcanvas.Title>
+            <Offcanvas show={props.show} onHide={props.handleShow} placement='end' backdrop={false}>
+                <Offcanvas.Header closeButton>
+                    <Offcanvas.Title>
+                        {comments.length > 0 ?
                             <span>Comments ({comments.length})</span>
-                        </Offcanvas.Title>
-                    </Offcanvas.Header>
-                    <Offcanvas.Body id='containerDiv'>
-                        <CommentSelectors handleSort={handleSort} />
-                        {comments.map((comment) =>
-                            <Comment 
-                                key={comment.id} 
-                                handleViewLikes={handleViewLikes} 
-                                handleReply={handleReply} 
-                                handleLike={handleLike}
-                                handleUnlike={handleUnlike}
-                                id={comment.id} 
-                                name={comment.name} 
-                                comment={comment.comment} 
-                                dateCreated={comment.dateCreated} 
-                                numberOfLikes={comment.numberOfLikes} 
-                                role={comment.role} 
-                            />
-                        )}
-                        <div className='centered'>
-                            <Button sx={{marginBottom: '12px', marginRight: '7px'}}onClick={scrollToTop}>Back to Top</Button>
-                        </div>
-                        <TextField
-                            id='focused'
-                            onChange={handleNewCommentChange}
-                            name='newComment'
-                            value={newComment}
-                            fullWidth
-                            label={addCommentInput}
-                            multiline
-                            rows={6}
+                            :
+                            <span>Comments</span>
+                        }
+                    </Offcanvas.Title>
+                </Offcanvas.Header>
+                <Offcanvas.Body id='containerDiv'>
+                    <CommentSelectors handleSort={handleSort} />
+                    {comments.length > 0 ? comments.map((comment) =>
+                        <Comment 
+                            key={comment.id} 
+                            handleViewLikes={handleViewLikes} 
+                            handleReply={handleReply} 
+                            handleLike={handleLike}
+                            handleUnlike={handleUnlike}
+                            id={comment.id} 
+                            name={comment.name} 
+                            comment={comment.comment} 
+                            dateCreated={comment.dateCreated} 
+                            numberOfLikes={comment.numberOfLikes} 
+                            role={comment.role} 
                         />
-                        <div className='bottom-buttons'>
-                            <Button onClick={handleClearText} variant="text">Clear</Button>
-                            <Button disabled={disabled} onClick={handlePostComment} style={{marginTop: '10px'}} variant="contained">Post Comment</Button>
+                    ) :
+                        <div className='centered no-comments'>
+                            No one has added any comments yet.
                         </div>
-                        <LikesDialog
-                            open={openViewLikes}
-                            onClose={handleClose}
-                            commentObj={viewLikesObj}
-                        />
-                        <Tooltip title='Add Comment'>
-                            <Fab onClick={scrollToAdd} color="primary" aria-label="add comment" style={{position: 'fixed', top: 82.5, right: 32.5}}>
-                                <AddIcon />
-                            </Fab>
-                        </Tooltip>
-                    </Offcanvas.Body>
-                </Offcanvas>
-            }
+                    }
+                    <div className='centered'>
+                        <Button sx={{marginBottom: '12px', marginRight: '7px'}}onClick={scrollToTop}>Back to Top</Button>
+                    </div>
+                    <TextField
+                        id='focused'
+                        onChange={handleNewCommentChange}
+                        name='newComment'
+                        value={newComment}
+                        fullWidth
+                        label={addCommentInput}
+                        multiline
+                        rows={6}
+                    />
+                    <div className='bottom-buttons'>
+                        <Button onClick={handleClearText} variant="text">Clear</Button>
+                        <Button disabled={disabled} onClick={handlePostComment} style={{marginTop: '10px'}} variant="contained">Post Comment</Button>
+                    </div>
+                    <LikesDialog
+                        open={openViewLikes}
+                        onClose={handleClose}
+                        commentObj={viewLikesObj}
+                    />
+                    <Tooltip title='Add Comment'>
+                        <Fab onClick={scrollToAdd} color="primary" aria-label="add comment" style={{position: 'fixed', top: 82.5, right: 16.5}}>
+                            <AddIcon />
+                        </Fab>
+                    </Tooltip>
+                </Offcanvas.Body>
+            </Offcanvas>
         </div>
     );
 };

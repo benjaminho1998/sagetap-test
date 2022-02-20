@@ -10,8 +10,8 @@ import MuiAlert from '@mui/material/Alert';
 
 //Container for the non-header content part of the app
 //Also loads in the json data so that the commentsLength shared state can be passed to subheader and sidebar
-const Content = React.memo(() => {
-
+const Content = () => {
+    
     //Raised the state of "show" to this component because it's used in sidebar and in subheader
     const [show, setShow] = useState(false); //show: boolean =  whether or not to show the sidebar
     const [openSnackbar, setOpenSnackbar] = useState(false); //openSnackbar: boolean whether or not to show the snackbar
@@ -73,6 +73,6 @@ const Content = React.memo(() => {
             }
         </div>
     );
-});
+};
 
 export default Content;
