@@ -95,7 +95,7 @@ const Sidebar = (props) => {
     }, [comments]);
 
     //function to close view likes dialog
-    const handleClose = (value) => {
+    const handleClose = () => {
         setOpenViewLikes(false);
     };
 
@@ -178,9 +178,7 @@ const Sidebar = (props) => {
                             />
                         )}
                         <div className='centered'>
-                            <Tooltip title='Scroll to Top'>
-                                <Button sx={{marginBottom: '12px', marginRight: '7px'}}onClick={scrollToTop}>Back to Top</Button>
-                            </Tooltip>
+                            <Button sx={{marginBottom: '12px', marginRight: '7px'}}onClick={scrollToTop}>Back to Top</Button>
                         </div>
                         <TextField
                             id='focused'

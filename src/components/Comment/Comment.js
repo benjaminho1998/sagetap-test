@@ -52,7 +52,7 @@ const Comment = (props) => {
     const handleLike = () => {
         if(liked) {
             setLiked(false);
-            props.handleLike(props.id, -1);
+            props.handleUnlike(props.id, -1);
         } else {
             setLiked(true);
             props.handleLike(props.id, 1);
@@ -122,17 +122,17 @@ const Comment = (props) => {
                             </div>
                         </Tooltip>
                         <CommentIcon handleFunction={handleComplete} icon='checkBox' animation={checkBox} />
+                        <Tooltip title='Pin Comment'>
+                            <div>
+                                <PushPinOutlinedIcon aria-label='handlePin' onClick={handlePin} className='pointer'></PushPinOutlinedIcon>
+                            </div>
+                        </Tooltip>
                         {props.name === name &&
                             <div className='hidden-icons'>
                                 <CommentIcon handleFunction={null} icon='edit' animation={edit} />
                                 <CommentIcon handleFunction={handleDelete} icon='trash2' animation={trash2} />
                             </div>
                         }
-                        <Tooltip title='Pin Comment'>
-                            <div>
-                                <PushPinOutlinedIcon onClick={handlePin} className='pointer'></PushPinOutlinedIcon>
-                            </div>
-                        </Tooltip>
                     </div>
                 </div>
             </Card.Body>

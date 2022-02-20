@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AvatarIcon Component renders snapshot correctly with props 1`] = `
+<div
+  className="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-ln2kiz-MuiAvatar-root"
+  style={
+    Object {
+      "height": "45px",
+      "width": "45px",
+    }
+  }
+>
+  BH
+</div>
+`;

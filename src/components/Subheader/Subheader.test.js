@@ -15,9 +15,7 @@ describe('Subheader Component', () => {
   });
 
   it('renders snapshot correctly with props', () => {
-    const handleShow = () => {
-        return;
-    }
+    const handleShow = jest.fn();
     const tree = renderer.create(<Subheader handleShow={handleShow} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
