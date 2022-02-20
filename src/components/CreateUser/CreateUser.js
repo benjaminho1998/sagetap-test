@@ -15,7 +15,7 @@ const CreateUser = (props) => {
 
     //Constants init
     const dispatch = useDispatch();
-    const roles = ['None', 'Sagetapper', 'Software Engeinner', 'Operations', 'Product Manager', 'CFO', 'CIO', 'COO', 'CEO', 'Sales', 'HR', 'Marketing', 'Business Analyst', 'Manager', 'Intern', 'Product Design', 'Finance', 'Accounting', 'Content Manager'];
+    const roles = ['None', 'Sagetapper', 'Software Engeineer', 'CTO', 'Operations', 'Product Manager', 'CFO', 'CIO', 'COO', 'CEO', 'Sales', 'HR', 'Marketing', 'Business Analyst', 'Manager', 'Intern', 'Product Design', 'Finance', 'Accounting', 'Content Manager'];
 
     //State init
     const [role, setRole] = useState(''); //role: string = the selected role
