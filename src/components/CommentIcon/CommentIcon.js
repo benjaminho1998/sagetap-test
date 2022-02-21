@@ -30,7 +30,8 @@ const CommentIcon = (props) => {
                     onClick={props.handleFunction && props.handleFunction} 
                     size={size} strokeColor={color} 
                     fillColor={color} 
-                    animation={props.animation} />
+                    animation={props.animation}
+                    tabIndex={0} />
             </div>
         </Tooltip>
     );

@@ -33,7 +33,7 @@ const CommentSelectors = (props) => {
                     onChange={handleSortChange}
                 >
                     <MenuItem value='idLow'>Reset</MenuItem>
-                    <MenuItem value='numberOfLikes'>Likes</MenuItem>
+                    <MenuItem value='numberOfLikes'>Most Likes</MenuItem>
                     <MenuItem value='nameLow'>Name</MenuItem>
                     <MenuItem value='id'>Most Recent</MenuItem>
                     <MenuItem value='roleLow'>Role</MenuItem>

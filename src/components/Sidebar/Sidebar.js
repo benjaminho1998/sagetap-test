@@ -125,15 +125,24 @@ const Sidebar = (props) => {
     }, [dispatch]);
 
     //Helper functions
+    //Gets and formats the date and time the comment was posted
     const createDate = () => {
+        const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         let today = new Date();
-        const dd = String(today.getDate()).padStart(2, '0');
-        const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        const dd = today.getDate();
+        const mm = monthNames[today.getMonth()];
         const yyyy = today.getFullYear();
-        const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-        today = mm + '/' + dd + '/' + yyyy + ' at ' + time;
+        const day = weekday[today.getDay()];
+        const options = {
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: true
+        };
+        const timeString = today.toLocaleString('en-US', options);
+        today = day + ', ' + mm + ' ' + dd + ', ' + yyyy + ' at ' + timeString;
         return today;
-    }
+    };
     
     //to check for button disabled value and reply mode
     useEffect(() => {
@@ -148,7 +157,7 @@ const Sidebar = (props) => {
         if(replyMode) {
             document.getElementById('focused').focus();
         }
-    }, [newComment, replyMode])
+    }, [newComment, replyMode]);
 
     return (
         <div>
@@ -206,7 +215,7 @@ const Sidebar = (props) => {
                         commentObj={viewLikesObj}
                     />
                     <Tooltip title='Add Comment'>
-                        <Fab onClick={scrollToAdd} color="primary" aria-label="add comment" style={{position: 'fixed', top: 82.5, right: 16.5}}>
+                        <Fab onClick={scrollToAdd} color="primary" aria-label="add comment" style={{position: 'fixed', top: 82.5, right: 32.5}}>
                             <AddIcon />
                         </Fab>
                     </Tooltip>

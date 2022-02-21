@@ -8,7 +8,6 @@ exports[`Subheader Component renders snapshot correctly with props 1`] = `
     Demo Project
   </span>
   <button
-    aria-label="comments"
     aria-labelledby={null}
     className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
     data-mui-internal-clone-element={true}

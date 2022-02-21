@@ -41,7 +41,7 @@ const CreateUser = (props) => {
             role: role
         };
         dispatch(updateUser(user));
-    }
+    };
 
     //handles changes in text fields
     const handleTextChange = (e) => {
@@ -56,7 +56,7 @@ const CreateUser = (props) => {
         if(field === 'email') {
             setEmail(input);
         }
-    }
+    };
 
     //handles disabled button value
     useEffect(() => {
@@ -65,7 +65,7 @@ const CreateUser = (props) => {
         } else {
             setDisabled(true);
         }
-    }, [firstName, lastName, email, role])
+    }, [firstName, lastName, email, role]);
 
     return (
         <div className='text-field-container'>

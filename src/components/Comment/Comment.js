@@ -112,7 +112,7 @@ const Comment = (props) => {
                             <Chip label="Completed" color="success" size='small' variant='outlined' style={{marginLeft: '10px'}} />
                         }
                         {pinned &&
-                            <Chip label="Pinned" color="warning" size='small' variant='outlined' style={{marginLeft: completed ? '5px': '10px'}} />
+                            <Chip label="Pinned" color="secondary" size='small' variant='outlined' style={{marginLeft: completed ? '5px': '10px'}} />
                         }
                     </div>
                     <div className='footer-sub'>

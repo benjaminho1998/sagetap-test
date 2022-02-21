@@ -11,13 +11,13 @@ const Subheader = (props) => {
     //handle function to open and close comment sidebar
     const handleShow = () => {
         props.handleShow();
-    }
+    };
 
     return (
         <div className='subheader-container'>
             <span>Demo Project</span>
             <Tooltip title='Open Comments'>
-                <IconButton onClick={handleShow} aria-label='comments'>
+                <IconButton onClick={handleShow} aria-label={props.commentsLength}>
                     <Badge badgeContent={props.commentsLength} color='error'>
                         <CommentIcon style={{ color: "white" }} color='action' />
                     </Badge>
