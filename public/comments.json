@@ -2,6 +2,19 @@
     [
         {
             "id": 1,
+            "name": "Michelle Obama",
+            "dateCreated": "Tuesday, October 22, 2021 at 4:45 PM",
+            "comment": "I like it. I believe every child in America deserves a good education.",
+            "edited": false,
+            "dateEdited": null,
+            "numberOfLikes": 0,
+            "likers": [],
+            "acknowledged": true,
+            "deleted": true,
+            "role": "CEO"
+        },
+        {
+            "id": 2,
             "name": "Benjamin Ho",
             "dateCreated": "Monday, October 21, 2021 at 2:34 PM",
             "comment": "This idea is great! We should do more of this, this and this. Also, the mitochondria is the powerhouse of the cell.",
@@ -15,19 +28,6 @@
             "acknowledged": false,
             "deleted": false,
             "role": "Software Engineer"
-        },
-        {
-            "id": 2,
-            "name": "Michelle Obama",
-            "dateCreated": "Tuesday, October 22, 2021 at 4:45 PM",
-            "comment": "I like it. I believe every child in America deserves a good education.",
-            "edited": false,
-            "dateEdited": null,
-            "numberOfLikes": 0,
-            "likers": [],
-            "acknowledged": true,
-            "deleted": true,
-            "role": "CEO"
         },
         {
             "id": 3,

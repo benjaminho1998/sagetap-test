@@ -86,7 +86,7 @@ const Comment = (props) => {
     };
 
     return (
-        <Card className='spacing' style={{outline: completed && '1px solid green'}}>
+        <Card className='spacing'>
             <Card.Body>
                 <Card.Title className='comment-header'>
                     <AvatarIcon name={props.name} />
@@ -109,22 +109,22 @@ const Comment = (props) => {
                             </Tooltip>
                         }
                         {completed &&
-                            <Chip label="Completed" color="success" size='small' variant='outlined' style={{marginLeft: '10px'}} />
+                            <Chip label="Completed" color="success" size='small' variant='outlined' style={{marginLeft: '8px'}} />
                         }
                         {pinned &&
-                            <Chip label="Pinned" color="secondary" size='small' variant='outlined' style={{marginLeft: completed ? '5px': '10px'}} />
+                            <Chip label="Pinned" color="secondary" size='small' variant='outlined' style={{marginLeft: completed ? '3px': '8px'}} />
                         }
                     </div>
                     <div className='footer-sub'>
                         <Tooltip title='Reply to Comment'>
                             <div>
-                                <ReplyIcon onClick={handleReply} className='pointer'></ReplyIcon>
+                                <ReplyIcon style={{color: '#676767'}} onClick={handleReply} className='pointer'></ReplyIcon>
                             </div>
                         </Tooltip>
                         <CommentIcon handleFunction={handleComplete} icon='checkBox' animation={checkBox} />
                         <Tooltip title='Pin Comment'>
                             <div>
-                                <PushPinOutlinedIcon aria-label='handlePin' onClick={handlePin} className='pointer'></PushPinOutlinedIcon>
+                                <PushPinOutlinedIcon style={{color: '#676767'}} aria-label='handlePin' onClick={handlePin} className='pointer'></PushPinOutlinedIcon>
                             </div>
                         </Tooltip>
                         {props.name === name &&

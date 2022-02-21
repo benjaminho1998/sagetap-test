@@ -5,8 +5,8 @@ import Tooltip from '@mui/material/Tooltip';
 const CommentIcon = (props) => {
 
     const icon = props.icon;
-    const color = icon === 'heart' ? 'red': 'black';
-    const size = icon === 'edit' ? 34: 30;
+    const color = icon === 'heart' ? 'red': '#676767';
+    const size = icon === 'edit' ? 29: 26;
 
     let title = '';
     if(icon === 'heart') {

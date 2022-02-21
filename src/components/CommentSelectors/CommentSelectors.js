@@ -24,12 +24,12 @@ const CommentSelectors = (props) => {
     return (
         <div className='sort'>
             <FormControl sx={{ m: 1, minWidth: 120, marginLeft: '-1px', marginRight: '-1px' }}>
-                <InputLabel id="demo-simple-select-label">Sort</InputLabel>
+                <InputLabel id="demo-simple-select-label">Sort By</InputLabel>
                 <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     value={sort}
-                    label="Sort"
+                    label="Sort By"
                     onChange={handleSortChange}
                 >
                     <MenuItem value='idLow'>Reset</MenuItem>

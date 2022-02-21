@@ -44,9 +44,9 @@
 
 .num-likes {
     font-weight: bold;
-    font-size: 18px;
-    margin-left: 5px;
-    color: black;
+    font-size: 16px;
+    margin-left: 3px;
+    color: rgb(33, 37, 41);
     border-radius: 50%;
 }
 
