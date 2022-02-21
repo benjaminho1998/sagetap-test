@@ -23,7 +23,7 @@ const CommentSelectors = (props) => {
 
     return (
         <div className='sort'>
-            <FormControl sx={{ m: 1, minWidth: 120, marginLeft: '-1px', marginRight: '-1px' }}>
+            <FormControl sx={{ m: 1, minWidth: 120, marginLeft: '0px' }}>
                 <InputLabel id="demo-simple-select-label">Sort By</InputLabel>
                 <Select
                     labelId="demo-simple-select-label"

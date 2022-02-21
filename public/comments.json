@@ -9,7 +9,7 @@
             "dateEdited": null,
             "numberOfLikes": 0,
             "likers": [],
-            "acknowledged": true,
+            "acknowledged": false,
             "deleted": true,
             "role": "CEO"
         },
@@ -75,7 +75,7 @@
             "dateEdited": null,
             "numberOfLikes": 0,
             "likers": [],
-            "acknowledged": false,
+            "acknowledged": true,
             "deleted": false,
             "role": "Sagetapper"
         },
