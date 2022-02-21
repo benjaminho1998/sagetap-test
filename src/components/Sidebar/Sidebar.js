@@ -161,7 +161,7 @@ const Sidebar = (props) => {
 
     return (
         <div>
-            <Offcanvas show={props.show} onHide={props.handleShow} placement='end' backdrop={false}>
+            <Offcanvas scroll={true} show={props.show} onHide={props.handleShow} placement='end' backdrop={false}>
                 <Offcanvas.Header closeButton>
                     <Offcanvas.Title>
                         {comments.length > 0 ?
